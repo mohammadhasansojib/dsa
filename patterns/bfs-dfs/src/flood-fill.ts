@@ -1,25 +1,21 @@
 function floodFill(image: number[][], sr: number, sc: number, color: number): number[][] {
-    const queue = [[sr,sc]];
-    const directions = [
-        [-1,0],
-        [0,-1],
-        [1,0],
-        [0,1]
-    ];
-    const targetValue = image[sr][sc];
+    const target = image[sr][sc];
+    if(target === color) return image;
+
+    const queue: [number, number][] = [[sr,sc]];
     image[sr][sc] = color;
 
-    if(targetValue === color) return image;
+    const directions = [[-1,0],[0,-1],[1,0],[0,1]];
 
-    for(const indices of queue){
-        const [r,c] = indices;
+    while(queue.length){
+        const [r,c] = queue.pop();
+        for(let [dx,dy] of directions){
+            let x = r + dx;
+            let y = c + dy;
 
-        for(const direction of directions){
-            const x = r + direction[0];
-            const y = c + direction[1];
-
-            if(x >= 0 && x < image.length && y >= 0 && y < image[0].length){
-                if(image[x][y] === targetValue){
+            
+            if(x >= 0 && y >= 0 && x < image.length && y < image[0].length){
+                if(image[x][y] === target){
                     image[x][y] = color;
                     queue.push([x,y]);
                 }
