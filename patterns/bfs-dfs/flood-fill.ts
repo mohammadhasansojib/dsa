@@ -2,13 +2,13 @@ function floodFill(image: number[][], sr: number, sc: number, color: number): nu
     const target = image[sr][sc];
     if(target === color) return image;
 
-    const queue: [number, number][] = [[sr,sc]];
+    const queue: number[][] = [[sr,sc]];
     image[sr][sc] = color;
 
     const directions = [[-1,0],[0,-1],[1,0],[0,1]];
 
     while(queue.length){
-        const [r,c] = queue.pop();
+        const [r,c] = queue.pop()!;
         for(let [dx,dy] of directions){
             let x = r + dx;
             let y = c + dy;
