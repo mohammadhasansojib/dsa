@@ -1,4 +1,4 @@
-import TreeNode from "./utils/TreeNode";
+import TreeNode from "../utils/TreeNode";
 
 function postorderTraversal(root: TreeNode | null): number[] {
     const result: number[] = [];
@@ -16,3 +16,6 @@ function postorderTraversal(root: TreeNode | null): number[] {
 
     return result;
 };
+
+
+// leetcode-145
